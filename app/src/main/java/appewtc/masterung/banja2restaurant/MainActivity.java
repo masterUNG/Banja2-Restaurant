@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (userString.equals("") || passwordString.equals("")) {
             //Have Space
-
+            MyAlertDialog myAlertDialog = new MyAlertDialog();
+            myAlertDialog.myDialog(MainActivity.this, "มีช่องว่าง", "กรุณากรอกทุกช่อง คะ");
 
         } else {
             //No Space
