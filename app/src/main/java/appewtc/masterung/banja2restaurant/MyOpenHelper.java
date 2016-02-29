@@ -30,6 +30,7 @@ public class MyOpenHelper extends SQLiteOpenHelper{
         super(context, database_name, null, database_version);
     }   // Constructor
 
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(create_table_food);
