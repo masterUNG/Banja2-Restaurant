@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 }   // for
 
             } catch (Exception e) {
-                Log.d("banje", "Update ==> " + e.toString());
+                Log.d("banja", "Update ==> " + e.toString());
             }
 
 
