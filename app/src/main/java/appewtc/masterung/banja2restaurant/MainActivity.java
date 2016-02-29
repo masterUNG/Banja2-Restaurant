@@ -16,6 +16,14 @@ public class MainActivity extends AppCompatActivity {
         //Request Database
         myManage = new MyManage(this);
 
+        //Test add Value
+        testAddValue();
+
     }   // Main Method
+
+    private void testAddValue() {
+        myManage.addUser("testUser", "1234", "โดรามอน");
+        myManage.addFood("ไข่เจียว", "100", "urlFood");
+    }
 
 }   // Main Class
