@@ -2,6 +2,7 @@ package appewtc.masterung.banja2restaurant;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,15 @@ public class ShowMenuFood extends AppCompatActivity {
         createFoodListView();
 
     }   // Main Method
+
+    public void clickReadOrder(View view) {
+
+        Intent intent = new Intent(ShowMenuFood.this, ReadOrderListView.class);
+        intent.putExtra("Officer", officerString);
+        intent.putExtra("Desk", deskString);
+        startActivity(intent);
+
+    }
 
     private void createDeskSpinner() {
 
@@ -123,11 +133,15 @@ public class ShowMenuFood extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
+        builder.setCancelable(false);
         builder.show();
 
     }   // findAmount
 
     private void addOrderToSQLite() {
+
+        MyManage myManage = new MyManage(this);
+        myManage.addOrder(officerString, deskString, orderFoodString, amountString);
 
     }
 
