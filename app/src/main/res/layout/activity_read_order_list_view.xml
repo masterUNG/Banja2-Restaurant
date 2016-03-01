@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="Order"
             android:id="@+id/button4"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="clickOrder" />
     </LinearLayout>
 
     <ListView
