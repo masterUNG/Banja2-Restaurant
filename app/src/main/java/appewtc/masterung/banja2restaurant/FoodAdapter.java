@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by masterUNG on 3/1/16 AD.
  */
@@ -55,8 +57,8 @@ public class FoodAdapter extends BaseAdapter{
 
         //For Image
         ImageView iconImageView = (ImageView) view1.findViewById(R.id.imageView2);
+        Picasso.with(context).load(iconStrings[i]).resize(150,150).into(iconImageView);
 
-
-        return null;
+        return view1;
     }
 }   // Main Class
