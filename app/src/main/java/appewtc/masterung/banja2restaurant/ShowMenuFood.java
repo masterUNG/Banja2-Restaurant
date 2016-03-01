@@ -1,5 +1,7 @@
 package appewtc.masterung.banja2restaurant;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -76,7 +78,7 @@ public class ShowMenuFood extends AppCompatActivity {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + MyManage.food_table, null);
         cursor.moveToFirst();
 
-        String[] foodStrings = new String[cursor.getCount()];
+        final String[] foodStrings = new String[cursor.getCount()];
         String[] priceStrings = new String[cursor.getCount()];
         String[] sourceStrings = new String[cursor.getCount()];
 
@@ -94,10 +96,41 @@ public class ShowMenuFood extends AppCompatActivity {
                 foodStrings, priceStrings, sourceStrings);
         foodListView.setAdapter(foodAdapter);
 
+        foodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                orderFoodString = foodStrings[i];
+
+                findAmount();
+
+            }
+        });
 
 
     }   // createFoodListView
+
+    private void findAmount() {
+
+        CharSequence[] charSequences = {"1 set", "2 set", "3 set", "4 set", "5 set"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(orderFoodString);
+        builder.setSingleChoiceItems(charSequences, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                amountString = Integer.toString(i + 1);
+                addOrderToSQLite();
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+
+    }   // findAmount
+
+    private void addOrderToSQLite() {
+
+    }
+
 
     private void bindWidget() {
         showOfficerTextView = (TextView) findViewById(R.id.textView);

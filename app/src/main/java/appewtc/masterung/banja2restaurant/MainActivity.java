@@ -211,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 MODE_PRIVATE, null);
         sqLiteDatabase.delete(MyManage.food_table, null, null);
         sqLiteDatabase.delete(MyManage.user_table, null, null);
+        sqLiteDatabase.delete(MyManage.order_table, null, null);
     }
 
     private void testAddValue() {
