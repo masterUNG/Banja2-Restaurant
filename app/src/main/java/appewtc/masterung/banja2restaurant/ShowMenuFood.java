@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -128,6 +129,9 @@ public class ShowMenuFood extends AppCompatActivity {
         builder.setSingleChoiceItems(charSequences, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                Log.d("test1", "i = " + i);
+
                 amountString = Integer.toString(i + 1);
                 addOrderToSQLite();
                 dialogInterface.dismiss();
@@ -156,7 +160,7 @@ public class ShowMenuFood extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        finish();
+       // finish();
 
     }
 }   // Main Class
