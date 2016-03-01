@@ -38,5 +38,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView"
         android:layout_below="@+id/linTop"
-        android:background="#96ffffff" />
+        android:background="#96ffffff"
+        android:layout_above="@+id/button2" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read Order"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

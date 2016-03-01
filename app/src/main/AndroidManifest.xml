@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowMenuFood"></activity>
+        <activity android:name=".ShowMenuFood" />
+        <activity android:name=".ReadOrderListView"></activity>
     </application>
 
 </manifest>

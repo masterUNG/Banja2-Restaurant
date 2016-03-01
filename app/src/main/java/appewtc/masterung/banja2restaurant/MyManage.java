@@ -26,6 +26,12 @@ public class MyManage {
     public static final String column_price = "Price";
     public static final String column_source = "Source";
 
+    public static final String order_table = "orderTABLE";
+    public static final String column_officer = "Officer";
+    public static final String column_desk = "Desk";
+    public static final String column_amount = "Amount";
+
+
     public MyManage(Context context) {
 
         //Create Database
@@ -34,6 +40,20 @@ public class MyManage {
         readSqLiteDatabase = myOpenHelper.getReadableDatabase();
 
     }   // Constructor
+
+    public long addOrder(String strOfficer,
+                         String strDesk,
+                         String strFood,
+                         String strAmount) {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(column_officer, strOfficer);
+        contentValues.put(column_food, strFood);
+        contentValues.put(column_desk, strDesk);
+        contentValues.put(column_amount, strAmount);
+
+        return writeSqLiteDatabase.insert(order_table, null, contentValues);
+    }
 
     public String[] searchUser(String strUser) {
 
