@@ -4,6 +4,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ public class ShowMenuFood extends AppCompatActivity {
     private TextView showOfficerTextView;
     private Spinner deskSpinner;
     private ListView foodListView;
+    private String officerString, deskString, orderFoodString, amountString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +27,46 @@ public class ShowMenuFood extends AppCompatActivity {
         //Bind Widget
         bindWidget();
 
+        //ShowView
+        showView();
+
+        //Create Desk Spinner
+        createDeskSpinner();
+
         //Create Food ListView
         createFoodListView();
 
     }   // Main Method
+
+    private void createDeskSpinner() {
+
+        final String[] deskStrings = {"โต้ที่ 1", "โต้ที่ 2", "โต้ที่ 3", "โต้ที่ 4", "โต้ที่ 5",
+                "โต้ที่ 6", "โต้ที่ 7", "โต้ที่ 8", "โต้ที่ 9", "โต้ที่ 10"};
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, deskStrings);
+        deskSpinner.setAdapter(stringArrayAdapter);
+
+        deskSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                deskString = deskStrings[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                deskString = deskStrings[0];
+            }
+        });
+
+
+    }   // createDeskSpinner
+
+    private void showView() {
+
+        officerString = getIntent().getStringExtra("Officer");
+        showOfficerTextView.setText(officerString);
+
+    }
 
     private void createFoodListView() {
 
@@ -49,6 +89,10 @@ public class ShowMenuFood extends AppCompatActivity {
             cursor.moveToNext();
         }   // for
         cursor.close();
+
+        FoodAdapter foodAdapter = new FoodAdapter(ShowMenuFood.this,
+                foodStrings, priceStrings, sourceStrings);
+        foodListView.setAdapter(foodAdapter);
 
 
 
