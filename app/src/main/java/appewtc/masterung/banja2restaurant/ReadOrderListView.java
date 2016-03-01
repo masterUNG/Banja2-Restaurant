@@ -1,11 +1,9 @@
 package appewtc.masterung.banja2restaurant;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import static appewtc.masterung.banja2restaurant.R.id.textView5;
 
 public class ReadOrderListView extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class ReadOrderListView extends AppCompatActivity {
 
     private void bindWidget() {
         showOfficerTextView = (TextView) findViewById(R.id.textView4);
-        showDeskTextView = (TextView) findViewById(textView5);
+        showDeskTextView = (TextView) findViewById(R.id.textView5);
         orderListView = (ListView) findViewById(R.id.listView2);
     }
 }   // Main Class
